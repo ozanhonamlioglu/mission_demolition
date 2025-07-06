@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ClaudCrafter : MonoBehaviour
+public class CloudCrafter : MonoBehaviour
 {
     [SerializeField] private int numClouds = 40;
     [SerializeField] private GameObject cloudPrefab;
