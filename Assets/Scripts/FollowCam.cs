@@ -28,9 +28,26 @@ public class FollowCam : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (POI.IsUnityNull()) return;
+        //if (POI.IsUnityNull()) return;
         // Get the position of the poi
-        var destination = POI.transform.position;
+        // var destination = POI.transform.position;
+
+        Vector3 destination;
+        if (POI.IsUnityNull())
+        {
+            destination = Vector3.zero;
+        }
+        else
+        {
+            destination = POI.transform.position;
+            if (POI.CompareTag("Projectile"))
+                if (POI.GetComponent<Rigidbody>().IsSleeping())
+                {
+                    POI = null;
+                    return;
+                }
+        }
+
         destination = Vector3.Lerp(transform.position, destination, easing);
         destination.z = camZ;
         destination.x = Mathf.Max(minXY.x, destination.x);

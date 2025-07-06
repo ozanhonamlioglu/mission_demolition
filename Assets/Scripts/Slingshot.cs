@@ -4,6 +4,14 @@ using UnityEngine.InputSystem;
 
 public class Slingshot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
+    static private Slingshot S;
+    static public Vector3 LAUNCH_POS {
+        get {
+            if (S == null ) return Vector3.zero;
+            return S.launchPos;
+        }
+    }
+    
     [SerializeField] private GameObject prefabProjectile;
 
     [SerializeField] public float velocityMult = 8f;
@@ -17,6 +25,7 @@ public class Slingshot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     private void Awake()
     {
+        S = this; 
         // Find the launch point GameObject in the scene
         var launchPointTrans = GameObject.Find("LaunchPoint").transform;
         launchPoint = launchPointTrans.gameObject;
