@@ -68,6 +68,8 @@ public class Slingshot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             projectileRigidbody.linearVelocity = -mouseDelta * velocityMult;
             FollowCam.POI = projectile;
             projectile = null;
+            MissionDemolition.ShotFired();
+            ProjectileLine.S.poi = projectile;
         }
     }
 

@@ -18,8 +18,7 @@ public class ProjectileLine : MonoBehaviour
         set
         {
             _poi = value;
-            if (
-                _poi != null)
+            if (_poi)
             {
                 line.enabled = false;
                 points = new List<Vector3>();
